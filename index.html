@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ad Grid Demo</title>
+  <meta name="description" content="Layout-only demo with multiple ad slots. Add your Google AdSense code where indicated." />
+
+  <!-- Basic styling for a dense ad layout -->
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #161a35;
+      --slot: #1e245a;
+      --text: #e6e8ff;
+      --muted: #9aa1ff;
+      --accent: #7aa2ff;
+      --gap: 12px;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: linear-gradient(180deg, #0f1220 0%, rgba(15,18,32,.9) 100%);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 12px; }
+
+    .brand {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--gap);
+    }
+    .brand h1 { font-size: 18px; margin: 0; letter-spacing: .3px; }
+    .brand nav a {
+      color: var(--muted); text-decoration: none; margin-left: 10px; font-size: 14px;
+    }
+    .brand nav a:hover { color: var(--text); }
+
+    .hero {
+      background: radial-gradient(1200px 300px at 50% -50%, rgba(122,162,255,.25), transparent),
+                  var(--panel);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    .hero p { margin: 0; color: var(--muted); }
+
+    /* Ad grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
+
+    .slot {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)) , var(--slot);
+      border: 1px dashed rgba(255,255,255,.25);
+      border-radius: var(--radius);
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slot::after {
+      content: "Ad Slot";
+      font-size: 12px;
+      letter-spacing: .2px;
+      opacity: .8;
+    }
+
+    /* Sizes */
+    .col-12 { grid-column: span 12; }
+    .col-8  { grid-column: span 8; }
+    .col-6  { grid-column: span 6; }
+    .col-4  { grid-column: span 4; }
+    .col-3  { grid-column: span 3; }
+
+    .h-90   { min-height: 90px; }
+    .h-250  { min-height: 250px; }
+    .h-300  { min-height: 300px; }
+
+    /* Footer */
+    footer {
+      margin-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: var(--panel);
+    }
+    footer .wrap { display: flex; gap: var(--gap); justify-content: space-between; flex-wrap: wrap; }
+    footer a { color: var(--muted); text-decoration: none; font-size: 13px; }
+    footer a:hover { color: var(--text); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .col-8, .col-6 { grid-column: span 12; }
+      .col-4 { grid-column: span 6; }
+      .col-3 { grid-column: span 6; }
+    }
+    @media (max-width: 520px) {
+      .col-4, .col-3 { grid-column: span 12; }
+    }
+  </style>
+
+  <!--
+    ADD YOUR GOOGLE ADSENSE SCRIPT HERE (example placeholder):
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
+            crossorigin="anonymous"></script>
+  -->
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <h1>Ad Grid</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Privacy</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p>Layout-only page with many ad placeholders. Insert AdSense units where indicated.</p>
+    </section>
+
+    <!-- TOP BANNER -->
+    <div class="grid">
+      <div class="slot col-12 h-90">
+        <!-- Insert AdSense unit: Leaderboard / Responsive -->
+      </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="grid" style="margin-top:12px;">
+      <!-- Left content / dense ads -->
+      <div class="slot col-8 h-300">
+        <!-- Insert AdSense unit -->
+      </div>
+
+      <!-- Right rail -->
+      <div class="slot col-4 h-300">
+        <!-- Insert AdSense unit -->
+      </div>
+
+      <!-- Row of medium rectangles -->
+      <div class="slot col-4 h-250"><!-- AdSense --></div>
+      <div class="slot col-4 h-250"><!-- AdSense --></div>
+      <div class="slot col-4 h-250"><!-- AdSense --></div>
+
+      <!-- Small units -->
+      <div class="slot col-3 h-90"><!-- AdSense --></div>
+      <div class="slot col-3 h-90"><!-- AdSense --></div>
+      <div class="slot col-3 h-90"><!-- AdSense --></div>
+      <div class="slot col-3 h-90"><!-- AdSense --></div>
+
+      <!-- More blocks -->
+      <div class="slot col-6 h-250"><!-- AdSense --></div>
+      <div class="slot col-6 h-250"><!-- AdSense --></div>
+
+      <!-- Bottom wide -->
+      <div class="slot col-12 h-250">
+        <!-- Insert AdSense unit -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <a href="#">Privacy Policy</a> ·
+        <a href="#">Terms</a> ·
+        <a href="#">Cookie Settings</a>
+      </div>
+      <div>
+        <a href="#">© 2026</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--
+    OPTIONAL:
+    - Add CMP / consent management before loading ads if required.
+    - Use responsive ad units for better fill.
+    - Keep content present to comply with ad policies.
+  -->
+</body>
+</html>
